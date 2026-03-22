@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "GameFeatureAction_WorldActionBase.h"
+#include "GameFeatureAction_ModularWorldBase.h"
 #include "UObject/SoftObjectPtr.h"
 #include "GameFeatureAction_AddInputContextMapping.generated.h"
 
@@ -39,7 +39,7 @@ struct FInputMappingContextAndPriority
  * Expects that local players are set up to use the EnhancedInput system.
  */
 UCLASS(meta = (DisplayName = "Add Input Mapping"))
-class MODULARGAMEPLAYDATA_API UGameFeatureAction_AddInputContextMapping final : public UGameFeatureAction_WorldActionBase
+class MODULARGAMEPLAYDATA_API UGameFeatureAction_AddInputContextMapping final : public UGameFeatureAction_ModularWorldBase
 {
 	GENERATED_BODY()
 
@@ -90,9 +90,9 @@ private:
 	/** Unregisters owned Input Mapping Contexts from the Input Registry Subsystem for a specified Local Player. This also gets called when a Local Player is removed. */
 	void UnregisterInputMappingContextsForLocalPlayer(ULocalPlayer* LocalPlayer);
 
-	//~UGameFeatureAction_WorldActionBase interface
+	//~UGameFeatureAction_ModularWorldBase interface
 	virtual void AddToWorld(const FWorldContext& WorldContext, const FGameFeatureStateChangeContext& ChangeContext) override;
-	//~End of UGameFeatureAction_WorldActionBase interface
+	//~End of UGameFeatureAction_ModularWorldBase interface
 
 	void Reset(FPerContextData& ActiveData);
 	void HandleControllerExtension(AActor* Actor, FName EventName, FGameFeatureStateChangeContext ChangeContext);

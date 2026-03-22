@@ -4,7 +4,7 @@
 
 #include "GameFeatureAction.h"
 #include "GameFeaturesSubsystem.h"
-#include "GameFeatureAction_WorldActionBase.generated.h"
+#include "GameFeatureAction_ModularWorldBase.generated.h"
 
 class FDelegateHandle;
 class UGameInstance;
@@ -18,7 +18,7 @@ struct FWorldContext;
  * Base class for GameFeatureActions that wish to do something world specific.
  */
 UCLASS(Abstract)
-class MODULARGAMEPLAYDATA_API UGameFeatureAction_WorldActionBase : public UGameFeatureAction
+class MODULARGAMEPLAYDATA_API UGameFeatureAction_ModularWorldBase : public UGameFeatureAction
 {
 	GENERATED_BODY()
 
@@ -27,7 +27,7 @@ public:
 
 private:
 	/** Override with the action-specific logic */
-	virtual void AddToWorld(const FWorldContext& WorldContext, const FGameFeatureStateChangeContext& ChangeContext) PURE_VIRTUAL(UGameFeatureAction_WorldActionBase::AddToWorld,);
+	virtual void AddToWorld(const FWorldContext& WorldContext, const FGameFeatureStateChangeContext& ChangeContext) PURE_VIRTUAL(UGameFeatureAction_ModularWorldBase::AddToWorld,);
 
 	TMap<FGameFeatureStateChangeContext, FDelegateHandle> GameInstanceStartHandles;
 
